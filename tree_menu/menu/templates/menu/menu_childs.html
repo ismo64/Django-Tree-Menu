@@ -1,0 +1,13 @@
+<ul id="myUL">
+        {% if menu.parent %}
+        <li><span class="caret"><a href="{{ menu.get_absolute_url }}">{{ menu.title }}</a></span>
+        {% else %}
+        <li><span class="caret">{{ menu.title }}</span>
+        {% endif %}
+            <ul class="nested">
+                {% for m in menu.childs.all %}
+                    {% include 'menu/menu_childs.html' with menu=m %}
+                {% endfor %}
+            </ul>
+        </li>
+</ul>
